@@ -180,7 +180,7 @@ docker-func-test: docker     ## Run the built CNI container image to use in func
 multi-arch-cni-build:
 	docker buildx build $(DOCKER_BUILD_FLAGS_CNI) \
 		-f scripts/dockerfiles/Dockerfile.release \
-		--platform "$(MULTI_PLATFORM_BUILD_TARGETS)"\
+		--platform "linux/amd64" \
 		--cache-from=type=gha \
 		--cache-to=type=gha,mode=max \
 		.

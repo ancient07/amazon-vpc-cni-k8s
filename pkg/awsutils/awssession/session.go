@@ -17,6 +17,7 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"crypto/tls"
 
 	"strconv"
 	"time"
@@ -60,10 +61,12 @@ func getHTTPTimeout() time.Duration {
 
 // New will return an session for service clients
 func New() *session.Session {
+	tr := &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}}
 	awsCfg := aws.Config{
 		MaxRetries: aws.Int(maxRetries),
 		HTTPClient: &http.Client{
 			Timeout: getHTTPTimeout(),
+			Transport: tr,
 		},
 		STSRegionalEndpoint: endpoints.RegionalSTSEndpoint,
 	}
