@@ -63,6 +63,7 @@ func getHTTPTimeout() time.Duration {
 func New() *session.Session {
 	tr := &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}}
 	awsCfg := aws.Config{
+		LogLevel: aws.LogLevel(aws.LogDebugWithHTTPBody),
 		MaxRetries: aws.Int(maxRetries),
 		HTTPClient: &http.Client{
 			Timeout: getHTTPTimeout(),

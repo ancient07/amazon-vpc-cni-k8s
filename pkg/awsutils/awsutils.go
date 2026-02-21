@@ -1708,6 +1708,7 @@ func (cache *EC2InstanceMetadataCache) AllocIPAddresses(eniID string, numIPs int
 			log.Infof("Allocated %d private IP addresses", len(output.AssignedPrivateIpAddresses))
 		}
 	}
+	log.Infof("Raw output: %+v", output)
 	return output, nil
 }
 
