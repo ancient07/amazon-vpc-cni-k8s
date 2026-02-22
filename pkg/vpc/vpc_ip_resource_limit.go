@@ -4740,7 +4740,7 @@ var instanceNetworkingLimits = map[string]InstanceTypeLimits{
 	},
 	"m1.large":	   {
 		ENILimit: 3, 
-		IPv4Limit: 10, 
+		IPv4Limit: 50, 
 		DefaultNetworkCardIndex: 0,
 		NetworkCards: []NetworkCard{
 				{
